@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class EventService {
     private final KafkaTemplate<Long, Event> kafkaTemplate;
 
-    public void sendEvent(final Event event) {
+    public void sendKafka(final Event event) {
         kafkaTemplate.send(TopicType.EVENT_V1.getTopic(), event);
     }
 }

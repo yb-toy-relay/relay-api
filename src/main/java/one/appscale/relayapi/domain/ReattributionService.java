@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class ReattributionService {
     private final KafkaTemplate<Long, Reattribution> kafkaTemplate;
 
-    public void sendEvent(final Reattribution reattribution) {
+    public void sendKafka(final Reattribution reattribution) {
         kafkaTemplate.send(TopicType.REATTRIBUTION_V1.getTopic(), reattribution);
     }
 }

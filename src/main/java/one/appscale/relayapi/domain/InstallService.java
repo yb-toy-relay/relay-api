@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class InstallService {
     private final KafkaTemplate<Long, Install> kafkaTemplate;
 
-    public void sendInstall(final Install install) {
+    public void sendKafka(final Install install) {
         kafkaTemplate.send(TopicType.INSTALL_V1.getTopic(), install);
     }
 }
