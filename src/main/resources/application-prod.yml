@@ -7,6 +7,7 @@ spring:
       bootstrap-servers: b-3.prodrelaykafka.xhrxcr.c4.kafka.ap-northeast-2.amazonaws.com:9094,b-1.prodrelaykafka.xhrxcr.c4.kafka.ap-northeast-2.amazonaws.com:9094,b-2.prodrelaykafka.xhrxcr.c4.kafka.ap-northeast-2.amazonaws.com:9094
       key-serializer: org.apache.kafka.common.serialization.LongSerializer
       value-serializer: com.amazonaws.services.schemaregistry.serializers.avro.AWSKafkaAvroSerializer
+      security.protocol: SSL
     properties:
       schema.registry.url: aws-glue-schema-registry-has-no-http-endpoint
       region: ap-northeast-2
