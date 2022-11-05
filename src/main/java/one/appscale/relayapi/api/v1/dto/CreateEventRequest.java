@@ -4,6 +4,7 @@ import one.appscale.relaycommon.ActivityKind;
 import one.appscale.relayschema.domain.ActivityKey;
 import one.appscale.relayschema.domain.AppInfo;
 import one.appscale.relayschema.domain.ChannelInfo;
+import one.appscale.relayschema.domain.CustomParameter;
 import one.appscale.relayschema.domain.DeviceDetail;
 import one.appscale.relayschema.domain.DeviceIdInfo;
 import one.appscale.relayschema.domain.EnvironmentInfo;
@@ -50,7 +51,12 @@ public record CreateEventRequest(@NotNull Long createdAt,
                                  String fbRefAdObjective,
                                  String fbRefCampaignGroup,
                                  String fbRefCampaign,
-                                 String fbRefAdgroup) {
+                                 String fbRefAdgroup,
+                                 String adjCustom1,
+                                 String adjCustom2,
+                                 String adjCustom3,
+                                 String adjCustom4,
+                                 String adjCustom5) {
     public Event toEvent() {
         final ActivityKey activityKey = ActivityKey.newBuilder()
                                                    .setCreatedAt(createdAt)
@@ -106,6 +112,13 @@ public record CreateEventRequest(@NotNull Long createdAt,
                                                                               .setFbRefCampaign(fbRefCampaign)
                                                                               .setFbRefAdgroup(fbRefAdgroup)
                                                                               .build();
+        final CustomParameter customParameter = CustomParameter.newBuilder()
+                                                               .setAdjCustom1(adjCustom1)
+                                                               .setAdjCustom2(adjCustom2)
+                                                               .setAdjCustom3(adjCustom3)
+                                                               .setAdjCustom4(adjCustom4)
+                                                               .setAdjCustom5(adjCustom5)
+                                                               .build();
         return Event.newBuilder()
                     .setActivityKey(activityKey)
                     .setAppInfo(appInfo)
@@ -115,6 +128,7 @@ public record CreateEventRequest(@NotNull Long createdAt,
                     .setEventInfo(eventInfo)
                     .setEnvironmentInfo(environmentInfo)
                     .setFacebookReferrerInfo(facebookReferrerInfo)
+                    .setCustomParameter(customParameter)
                     .build();
     }
 }
